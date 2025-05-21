@@ -4,6 +4,7 @@ body {
     padding: 20px;
     background-color: #E6F0E9; /* Светло-зелёный фон, как на портале */
     color: #000000;
+    border: 2px solid #00C853; /* Тестовый бордер для проверки подключения CSS */
 }
 
 .screen {

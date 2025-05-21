@@ -8,27 +8,100 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Abstract GameFi Hub</h1>
-        <p>Explore top GameFi projects and earn rewards!</p>
-    </header>
-    <main>
-        <div class="game-card">
-            <img src="game1-logo.png" alt="Game 1">
-            <h2>Game 1</h2>
-            <p>Play-to-Earn game with NFT rewards.</p>
-            <a href="YOUR_REFERRAL_LINK" target="_blank">Join Now</a>
-        </div>
-        <!-- Добавьте больше карточек для других игр -->
-    </main>
-    <footer>
-        <p>Contact us for collaboration: @YourTelegramHandle</p>
-    </footer>
+    <!-- Начальный экран: вопрос о кошельке -->
+    <div id="welcome-screen" class="screen active">
+        <header>
+            <h1>Welcome to Abstract GameFi Hub</h1>
+            <p>Explore the best GameFi projects in the Abstract ecosystem!</p>
+        </header>
+        <main>
+            <h2>Do you have an Abstract wallet?</h2>
+            <div class="button-group">
+                <button onclick="showMainScreen()">Yes, I have a wallet</button>
+                <button onclick="showWalletInstructions()">No, I need a wallet</button>
+            </div>
+            <div id="wallet-instructions" class="hidden">
+                <p><a href="https://portal.abs.xyz/login" target="_blank">Create an Abstract wallet</a> to start playing GameFi projects!</p>
+                <p class="instructions-placeholder">[Instructions for creating an Abstract wallet will be added here.]</p>
+                <button onclick="showMainScreen()">Continue to Games</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Основной экран: каталог приложений -->
+    <div id="main-screen" class="screen hidden">
+        <header>
+            <h1>Abstract GameFi Hub</h1>
+            <p>Join exciting GameFi projects and earn rewards!</p>
+        </header>
+        <main>
+            <!-- Бюджетные проекты -->
+            <section>
+                <h2>Free-to-Play Games</h2>
+                <div class="game-card">
+                    <h3>Roach Racing Club</h3>
+                    <p>Race digital roaches and earn NFT rewards!</p>
+                    <a href="https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank">Play Now</a>
+                </div>
+                <div class="game-card">
+                    <h3>DUPER</h3>
+                    <p>A fun Play-to-Earn game with unique mechanics.</p>
+                    <a href="https://www.duper.gg/?invokeCode=c2pnl47s" target="_blank">Play Now</a>
+                </div>
+                <div class="game-card-telegram">
+                    <h3>Pengu Clash</h3>
+                    <p>Battle with penguins in this Telegram-based game!</p>
+                    <button onclick="window.open('https://t.me/pengu_clash_bot?start=invite-j01bxo', '_blank')">Play in Telegram</button>
+                </div>
+                <div class="game-card">
+                    <h3>Giga Verse</h3>
+                    <p>Explore a vast GameFi universe with earning opportunities.</p>
+                    <a href="https://gigaverse.io/?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank">Play Now</a>
+                </div>
+            </section>
+            <!-- Платные проекты -->
+            <section>
+                <h2>Premium Games</h2>
+                <div class="game-card">
+                    <h3>BigCoin</h3>
+                    <p>Stake, trade, and earn in this premium GameFi experience.</p>
+                    <a href="https://www.bigcoin.tech?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank">Play Now</a>
+                </div>
+                <div class="game-card">
+                    <h3>Gacha</h3>
+                    <p>Collect rare NFTs in this exciting gacha game.</p>
+                    <a href="https://gacha.game?ref=UH7GXPSD" target="_blank">Play Now</a>
+                </div>
+                <div class="game-card">
+                    <h3>Multiplier</h3>
+                    <p>Multiply your earnings with strategic gameplay.</p>
+                    <a href="https://multiplier.fun?af=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank">Play Now</a>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>Built with ❤️ for the Abstract community</p>
+            <p>Want to collaborate? Contact us: @YourTelegramHandle</p>
+        </footer>
+    </div>
+
     <script>
         // Инициализация Telegram WebApp
         const WebApp = window.Telegram.WebApp;
         WebApp.ready();
         WebApp.expand(); // Раскрыть приложение на полный экран
+
+        // Функции для переключения экранов
+        function showMainScreen() {
+            document.getElementById('welcome-screen').classList.remove('active');
+            document.getElementById('welcome-screen').classList.add('hidden');
+            document.getElementById('main-screen').classList.remove('hidden');
+            document.getElementById('main-screen').classList.add('active');
+        }
+
+        function showWalletInstructions() {
+            document.getElementById('wallet-instructions').classList.remove('hidden');
+        }
     </script>
 </body>
 </html>

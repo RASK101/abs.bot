@@ -1,10 +1,39 @@
 body {
-    font-family: 'Roboto', Arial, sans-serif; /* Современный шрифт, как у Abstract */
+    font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
-    padding: 20px;
-    background-color: #E6F0E9; /* Светло-зелёный фон, как на портале */
+    padding: 15px;
+    background-color: #FFFFFF;
     color: #000000;
-    border: 2px solid #00C853; /* Тестовый бордер для проверки подключения CSS */
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00DE73;
+    text-decoration: none;
+}
+
+.language-switch {
+    display: flex;
+    gap: 10px;
+}
+
+.language-switch button {
+    background: none;
+    border: 1px solid #00DE73;
+    color: #00DE73;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .screen {
@@ -15,39 +44,44 @@ body {
     display: block;
 }
 
-.abstract-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.abstract-header h1 {
-    font-size: 24px;
-    color: #000000;
-    font-weight: bold;
-}
-
-.abstract-header p {
-    font-size: 16px;
-    color: #666666;
-}
-
-.abstract-main {
+.welcome-main, .earn-main, .game-main {
     max-width: 600px;
     margin: 0 auto;
-    background-color: #FFF9E6; /* Светло-жёлтый фон, как в профиле */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-.abstract-section {
-    margin-bottom: 30px;
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
 }
 
 h2 {
-    font-size: 20px;
-    margin: 20px 0 10px;
-    color: #000000;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (min-width: 500px) {
+    .two-column {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .button-group {
@@ -57,93 +91,117 @@ h2 {
     margin: 20px 0;
 }
 
-.abstract-btn {
-    background: #00C853; /* Яркий зелёный, как кнопка "Enter Portal" */
-    color: white;
+.accent-btn {
+    background: #00DE73;
+    color: #FFFFFF;
     border: none;
-    padding: 12px 20px;
+    padding: 12px;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
     transition: background 0.3s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.abstract-btn:hover {
-    background: #009624; /* Тёмный зелёный для эффекта наведения */
+.accent-btn:hover {
+    background: #05472A;
+}
+
+.large-accent-btn {
+    background: #00DE73;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    max-width: 300px;
+}
+
+.large-accent-btn:hover {
+    background: #05472A;
+}
+
+.help-btn {
+    background: #05472A;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.help-btn:hover {
+    background: #00331A;
+}
+
+.app-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup.hidden {
+    display: none;
+}
+
+.popup-content {
+    background: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 300px;
+    width: 90%;
+}
+
+.close-btn {
+    background: #05472A;
+    color: #FFFFFF;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.close-btn:hover {
+    background: #00331A;
 }
 
 .game-card {
-    background: #FFFFFF;
-    border-radius: 10px;
+    background: #F9F9F9;
     padding: 15px;
+    border-radius: 8px;
     margin-bottom: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.game-card h3 {
-    font-size: 18px;
-    margin: 0 0 10px;
-    color: #000000;
-}
-
-.game-card p {
-    font-size: 14px;
-    color: #666666;
-    margin: 0 0 10px;
-}
-
-.abstract-link {
-    color: #00C853;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.abstract-link:hover {
-    text-decoration: underline;
-}
-
-#wallet-instructions {
-    margin-top: 20px;
+.screenshot-placeholder {
+    border: 2px dashed #00DE73;
+    padding: 20px;
     text-align: center;
+    margin: 10px 0;
+    color: #666;
 }
 
-#wallet-instructions p {
-    font-size: 14px;
-    color: #333;
-}
-
-.instructions-placeholder {
-    color: #999;
-    font-style: italic;
-}
-
-.abstract-footer {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 12px;
-    color: #666666;
-}
-
-.abstract-footer p {
-    margin: 5px 0;
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    .abstract-header h1 {
-        font-size: 20px;
-    }
-    .abstract-header p {
-        font-size: 14px;
-    }
-    .game-card {
-        padding: 10px;
-    }
-    .abstract-btn {
-        font-size: 14px;
-        padding: 10px 15px;
-    }
+@media (max-width: 500px) {
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+    h3 { font-size: 16px; }
+    p { font-size: 12px; }
+    .accent-btn, .large-accent-btn { font-size: 14px; padding: 10px; }
+    .two-column { grid-template-columns: 1fr; }
 }

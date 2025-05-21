@@ -10,76 +10,76 @@
 <body>
     <!-- Начальный экран: вопрос о кошельке -->
     <div id="welcome-screen" class="screen active">
-        <header>
-            <h1>Welcome to Abstract GameFi Hub</h1>
+        <header class="abstract-header">
+            <h1>Abstract GameFi Hub</h1>
             <p>Explore the best GameFi projects in the Abstract ecosystem!</p>
         </header>
-        <main>
+        <main class="abstract-main">
             <h2>Do you have an Abstract wallet?</h2>
             <div class="button-group">
-                <button onclick="showMainScreen()">Yes, I have a wallet</button>
-                <button onclick="showWalletInstructions()">No, I need a wallet</button>
+                <button class="abstract-btn" onclick="showMainScreen()">Yes, I have a wallet</button>
+                <button class="abstract-btn" onclick="showWalletInstructions()">No, I need a wallet</button>
             </div>
             <div id="wallet-instructions" class="hidden">
-                <p><a href="https://portal.abs.xyz/login" target="_blank">Create an Abstract wallet</a> to start playing GameFi projects!</p>
+                <p><a href="https://portal.abs.xyz/login" target="_blank" class="abstract-link">Create an Abstract wallet</a> to start playing GameFi projects!</p>
                 <p class="instructions-placeholder">[Instructions for creating an Abstract wallet will be added here.]</p>
-                <button onclick="showMainScreen()">Continue to Games</button>
+                <button class="abstract-btn" onclick="showMainScreen()">Continue to Games</button>
             </div>
         </main>
     </div>
 
     <!-- Основной экран: каталог приложений -->
     <div id="main-screen" class="screen hidden">
-        <header>
+        <header class="abstract-header">
             <h1>Abstract GameFi Hub</h1>
             <p>Join exciting GameFi projects and earn rewards!</p>
         </header>
-        <main>
+        <main class="abstract-main">
             <!-- Бюджетные проекты -->
-            <section>
+            <section class="abstract-section">
                 <h2>Free-to-Play Games</h2>
                 <div class="game-card">
                     <h3>Roach Racing Club</h3>
                     <p>Race digital roaches and earn NFT rewards!</p>
-                    <a href="https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank">Play Now</a>
+                    <a href="https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank" class="abstract-btn">Play Now</a>
                 </div>
                 <div class="game-card">
                     <h3>DUPER</h3>
                     <p>A fun Play-to-Earn game with unique mechanics.</p>
-                    <a href="https://www.duper.gg/?invokeCode=c2pnl47s" target="_blank">Play Now</a>
+                    <a href="https://www.duper.gg/?invokeCode=c2pnl47s" target="_blank" class="abstract-btn">Play Now</a>
                 </div>
-                <div class="game-card-telegram">
+                <div class="game-card">
                     <h3>Pengu Clash</h3>
                     <p>Battle with penguins in this Telegram-based game!</p>
-                    <button onclick="window.open('https://t.me/pengu_clash_bot?start=invite-j01bxo', '_blank')">Play in Telegram</button>
+                    <button class="abstract-btn" onclick="window.open('https://t.me/pengu_clash_bot?start=invite-j01bxo', '_blank')">Play in Telegram</button>
                 </div>
                 <div class="game-card">
                     <h3>Giga Verse</h3>
                     <p>Explore a vast GameFi universe with earning opportunities.</p>
-                    <a href="https://gigaverse.io/?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank">Play Now</a>
+                    <a href="https://gigaverse.io/?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank" class="abstract-btn">Play Now</a>
                 </div>
             </section>
             <!-- Платные проекты -->
-            <section>
+            <section class="abstract-section">
                 <h2>Premium Games</h2>
                 <div class="game-card">
                     <h3>BigCoin</h3>
                     <p>Stake, trade, and earn in this premium GameFi experience.</p>
-                    <a href="https://www.bigcoin.tech?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank">Play Now</a>
+                    <a href="https://www.bigcoin.tech?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank" class="abstract-btn">Play Now</a>
                 </div>
                 <div class="game-card">
                     <h3>Gacha</h3>
                     <p>Collect rare NFTs in this exciting gacha game.</p>
-                    <a href="https://gacha.game?ref=UH7GXPSD" target="_blank">Play Now</a>
+                    <a href="https://gacha.game?ref=UH7GXPSD" target="_blank" class="abstract-btn">Play Now</a>
                 </div>
                 <div class="game-card">
                     <h3>Multiplier</h3>
                     <p>Multiply your earnings with strategic gameplay.</p>
-                    <a href="https://multiplier.fun?af=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank">Play Now</a>
+                    <a href="https://multiplier.fun?af=0xe36E94D7ac69e0459e08b993b13cBF5542f34933" target="_blank" class="abstract-btn">Play Now</a>
                 </div>
             </section>
         </main>
-        <footer>
+        <footer class="abstract-footer">
             <p>Built with ❤️ for the Abstract community</p>
             <p>Want to collaborate? Contact us: @YourTelegramHandle</p>
         </footer>

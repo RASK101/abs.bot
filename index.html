@@ -8,7 +8,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <!-- Логотип и переключатель языка -->
+    <!-- Шапка с логотипом и переключателем языка -->
     <header class="app-header">
         <a href="#" class="logo" onclick="showScreen('earn-xp')">abs hub</a>
         <div class="language-switch">
@@ -70,7 +70,7 @@
         <main class="two-column">
             <div>
                 <h2 id="fund-title">Давайте пополним кошелек Abstract</h2>
-                <p id="fund-instructions">Это проще, чем вы думаете! Перейдите в свой профиль Abstract (<a href="https://portal.abs.xyz/profile" target="_blank">https://portal.abs.xyz/profile</a>) и найдите кнопку +Fund. После чего выберите способ пополнения. Самым простым способом будет пополнение через Moonpay с помощью Apple Pay или вашей банковской картой.</p>
+                <p id="fund-instructions">Это проще, чем вы думаете! Перейдите в свой профиль Abstract (<a href="https://portal.abs.xyz/profile" target="_blank">https://portal.abs.xyz/profile</a>) и найдите кнопку +Fund. После чего выберите способ пополнения. Самым простым способом будет пополнение через Moonpay с помощью Apple Pay или вашей банковской карты.</p>
                 <p id="fund-options">Если у вас уже есть криптовалюта, то вы можете использовать: вывод с централизованной биржи, перевод с другого кошелька, бридж из другой сети. *Помните, что адрес кошелька в сети Abstract может принимать средства только в сети Abstract!</p>
                 <div class="screenshot-placeholder">[Место для скриншота кнопки +Fund]</div>
             </div>
@@ -282,9 +282,13 @@
         }
 
         function showScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(screen => screen.classList.add('hidden'));
-            document.getElementById(screenId).classList.remove('hidden');
-            document.getElementById(screenId).classList.add('active');
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.add('hidden');
+                screen.classList.remove('active');
+            });
+            const screen = document.getElementById(screenId);
+            screen.classList.remove('hidden');
+            screen.classList.add('active');
         }
 
         function showPopup(popupId) {

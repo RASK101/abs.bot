@@ -1,34 +1,148 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif; /* Современный шрифт, как у Abstract */
     margin: 0;
     padding: 20px;
-    background-color: #f0f0f0; /* Адаптируется к теме Telegram */
+    background-color: #E6F0E9; /* Светло-зелёный фон, как на портале */
+    color: #000000;
 }
-header, footer {
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+.abstract-header {
     text-align: center;
     margin-bottom: 20px;
 }
+
+.abstract-header h1 {
+    font-size: 24px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.abstract-header p {
+    font-size: 16px;
+    color: #666666;
+}
+
+.abstract-main {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #FFF9E6; /* Светло-жёлтый фон, как в профиле */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.abstract-section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 20px;
+    margin: 20px 0 10px;
+    color: #000000;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.abstract-btn {
+    background: #00C853; /* Яркий зелёный, как кнопка "Enter Portal" */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.abstract-btn:hover {
+    background: #009624; /* Тёмный зелёный для эффекта наведения */
+}
+
 .game-card {
-    background: white;
+    background: #FFFFFF;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.game-card img {
-    max-width: 100px;
-    height: auto;
+
+.game-card h3 {
+    font-size: 18px;
+    margin: 0 0 10px;
+    color: #000000;
 }
-.game-card a {
-    display: inline-block;
-    background: #007bff; /* Цвет кнопки, можно взять из бренда Abstract */
-    color: white;
-    padding: 10px 20px;
+
+.game-card p {
+    font-size: 14px;
+    color: #666666;
+    margin: 0 0 10px;
+}
+
+.abstract-link {
+    color: #00C853;
     text-decoration: none;
-    border-radius: 5px;
+    font-weight: bold;
 }
+
+.abstract-link:hover {
+    text-decoration: underline;
+}
+
+#wallet-instructions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#wallet-instructions p {
+    font-size: 14px;
+    color: #333;
+}
+
+.instructions-placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.abstract-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 12px;
+    color: #666666;
+}
+
+.abstract-footer p {
+    margin: 5px 0;
+}
+
 @media (max-width: 600px) {
     body {
         padding: 10px;
+    }
+    .abstract-header h1 {
+        font-size: 20px;
+    }
+    .abstract-header p {
+        font-size: 14px;
+    }
+    .game-card {
+        padding: 10px;
+    }
+    .abstract-btn {
+        font-size: 14px;
+        padding: 10px 15px;
     }
 }

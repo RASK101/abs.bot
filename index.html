@@ -3,34 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Abstract Hub</title>
+    <title>Abstract GameFi Hub</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <!-- Шапка с логотипом и переключателем языка -->
     <header class="app-header">
-        <a href="#" class="logo" onclick="showScreen('earn-xp')">abs hub</a>
+        <a href="#" class="logo" onclick="showScreen('earn-xp')" id="logo-text">abs hub</a>
         <div class="language-switch">
-            <button onclick="switchLanguage('ru')">RU</button>
-            <button onclick="switchLanguage('en')">EN</button>
+            <button onclick="switchLanguage('ru')" id="lang-ru">RU</button>
+            <button onclick="switchLanguage('en')" id="lang-en">EN</button>
         </div>
     </header>
 
     <!-- Приветственная страница -->
     <div id="welcome-screen" class="screen active">
         <main class="welcome-main">
-            <h1 id="welcome-greeting">Привет, @username!</h1>
+            <h1 id="welcome-greeting">Привет, user!</h1>
             <p id="welcome-text">Откройте для себя Abstract! L2 блокчейн, позволяющий взаимодействовать с web3 приложениями так же просто, как и с обычными. На Abstract каждое взаимодействие приносит XP. Это как очки опыта в игре, награждающие за активность. Они открывают доступ к наградам, включая аирдроп токена Abstract. Чем больше XP, тем выше шансы на получение. Продолжайте исследовать через наше приложение, чтобы максимизировать заработок!</p>
             <p id="wallet-prompt">Давайте заведем кошелек Abstract</p>
             <div class="button-group">
-                <button class="accent-btn" onclick="showScreen('create-wallet')">Да, давайте заведем</button>
-                <button class="accent-btn" onclick="showPopup('help-popup')">Нет, у меня уже есть кошелек Abstract</button>
+                <button class="accent-btn" onclick="showScreen('create-wallet')" id="btn-create-wallet">Да, давайте заведем</button>
+                <button class="accent-btn" onclick="showPopup('help-popup')" id="btn-have-wallet">Нет, у меня уже есть кошелек Abstract</button>
             </div>
         </main>
         <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')">Помощь</button>
+            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help">Помощь</button>
         </footer>
     </div>
 
@@ -39,10 +38,10 @@
         <div class="popup-content">
             <h2 id="popup-question">Нужна ли вам помощь с пополнением Abstract кошелька?</h2>
             <div class="button-group">
-                <button class="accent-btn" onclick="showScreen('fund-wallet')">Да, помогите</button>
-                <button class="accent-btn" onclick="showScreen('earn-xp')">Нет, я справлюсь</button>
+                <button class="accent-btn" onclick="showScreen('fund-wallet')" id="btn-help-fund">Да, помогите</button>
+                <button class="accent-btn" onclick="showScreen('earn-xp')" id="btn-no-help-fund">Нет, я справлюсь</button>
             </div>
-            <button class="close-btn" onclick="hidePopup('help-popup')">Закрыть</button>
+            <button class="close-btn" onclick="hidePopup('help-popup')" id="btn-close-popup">Закрыть</button>
         </div>
     </div>
 
@@ -56,13 +55,13 @@
             <div>
                 <p id="fund-prompt">Нужна ли вам помощь с пополнением Abstract кошелька?</p>
                 <div class="button-group">
-                    <button class="accent-btn" onclick="showScreen('fund-wallet')">Да, помогите</button>
-                    <button class="accent-btn" onclick="showScreen('earn-xp')">Нет, я справлюсь</button>
+                    <button class="accent-btn" onclick="showScreen('fund-wallet')" id="btn-help-fund-2">Да, помогите</button>
+                    <button class="accent-btn" onclick="showScreen('earn-xp')" id="btn-no-help-fund-2">Нет, я справлюсь</button>
                 </div>
             </div>
         </main>
         <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')">Помощь</button>
+            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-2">Помощь</button>
         </footer>
     </div>
 
@@ -76,11 +75,11 @@
                 <div class="screenshot-placeholder">[Место для скриншота кнопки +Fund]</div>
             </div>
             <div>
-                <button class="large-accent-btn" onclick="showScreen('earn-xp')">Чем заняться в Abstract?</button>
+                <button class="large-accent-btn" onclick="showScreen('earn-xp')" id="btn-what-next">Чем заняться в Abstract?</button>
             </div>
         </main>
         <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')">Помощь</button>
+            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-3">Помощь</button>
         </footer>
     </div>
 
@@ -92,12 +91,12 @@
             <h3 id="earn-subtitle">Как вы хотите это сделать?</h3>
             <p id="earn-desc">Все ваши действия на Abstract будут вознаграждать вас XP. Но платные взаимодействия принесут вам больше XP.</p>
             <div class="button-group">
-                <button class="accent-btn" onclick="showScreen('free-games')">Бюджетно</button>
-                <button class="accent-btn" onclick="showScreen('premium-games')">Готов вложиться</button>
+                <button class="accent-btn" onclick="showScreen('free-games')" id="btn-budget">Бюджетно</button>
+                <button class="accent-btn" onclick="showScreen('premium-games')" id="btn-premium">Готов вложиться</button>
             </div>
         </main>
         <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')">Помощь</button>
+            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-4">Помощь</button>
         </footer>
     </div>
 
@@ -109,37 +108,37 @@
                 <h3 id="roach-title">Roach Racing Club</h3>
                 <p id="roach-desc">Увлекательная гонка на цифровых тараканах, где игроки могут зарабатывать уникальные NFT в зависимости от результатов гонок.</p>
                 <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Играть</button>
-                    <button class="accent-btn" onclick="showPopup('roach-popup')">Подробнее</button>
+                    <button class="accent-btn" onclick="window.open('https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-roach">Играть</button>
+                    <button class="accent-btn" onclick="showPopup('roach-popup')" id="btn-details-roach">Подробнее</button>
                 </div>
             </div>
             <div class="game-card">
                 <h3 id="duper-title">DUPER</h3>
                 <p id="duper-desc">Весёлая Play-to-Earn игра с уникальной механикой, позволяющая собирать токены через выполнение миссий и сражений.</p>
                 <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://www.duper.gg/?invokeCode=c2pnl47s', '_blank')">Играть</button>
-                    <button class="accent-btn" onclick="showPopup('duper-popup')">Подробнее</button>
+                    <button class="accent-btn" onclick="window.open('https://www.duper.gg/?invokeCode=c2pnl47s', '_blank')" id="btn-play-duper">Играть</button>
+                    <button class="accent-btn" id="btn-details-duper">Подробнее</button>
                 </div>
             </div>
             <div class="game-card">
                 <h3 id="pengu-title">Pengu Clash</h3>
                 <p id="pengu-desc">Битвы с пингвинами в Telegram-боте, где игроки зарабатывают награды за победы в PvP-сражениях.</p>
                 <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://t.me/pengu_clash_bot?start=invite-j01bxo', '_blank')">Играть</button>
-                    <button class="accent-btn" onclick="showPopup('pengu-popup')">Подробнее</button>
+                    <button class="accent-btn" onclick="window.open('https://t.me/pengu_clash_bot?start=invite-j01bxo', '_blank')" id="btn-play-pengu">Играть</button>
+                    <button class="accent-btn" id="btn-details-pengu">Подробнее</button>
                 </div>
             </div>
             <div class="game-card">
                 <h3 id="giga-title">Giga Verse</h3>
                 <p id="giga-desc">Огромная игровая вселенная GameFi, где игроки исследуют миры и зарабатывают токены через квесты и торговлю.</p>
                 <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://gigaverse.io/?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Играть</button>
-                    <button class="accent-btn" onclick="showPopup('giga-popup')">Подробнее</button>
+                    <button class="accent-btn" onclick="window.open('https://gigaverse.io/?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-giga">Играть</button>
+                    <button class="accent-btn" id="btn-details-giga">Подробнее</button>
                 </div>
             </div>
         </main>
         <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')">Помощь</button>
+            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-5">Помощь</button>
         </footer>
     </div>
 
@@ -151,53 +150,65 @@
                 <h3 id="bigcoin-title">BigCoin</h3>
                 <p id="bigcoin-desc">Премиум-игра, сочетающая ставки, торговлю и заработок токенов через стратегические решения.</p>
                 <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://www.bigcoin.tech?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Играть</button>
-                    <button class="accent-btn" onclick="showPopup('bigcoin-popup')">Подробнее</button>
+                    <button class="accent-btn" onclick="window.open('https://www.bigcoin.tech?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-bigcoin">Играть</button>
+                    <button class="accent-btn" id="btn-details-bigcoin">Подробнее</button>
                 </div>
             </div>
             <div class="game-card">
                 <h3 id="gacha-title">Gacha</h3>
                 <p id="gacha-desc">Захватывающая игра с механикой gacha, где игроки собирают редкие NFT, открывая сундуки.</p>
                 <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://gacha.game?ref=UH7GXPSD', '_blank')">Играть</button>
-                    <button class="accent-btn" onclick="showPopup('gacha-popup')">Подробнее</button>
+                    <button class="accent-btn" onclick="window.open('https://gacha.game?ref=UH7GXPSD', '_blank')" id="btn-play-gacha">Играть</button>
+                    <button class="accent-btn" id="btn-details-gacha">Подробнее</button>
                 </div>
             </div>
             <div class="game-card">
                 <h3 id="multiplier-title">Multiplier</h3>
                 <p id="multiplier-desc">Стратегическая игра, где игроки умножают свои заработки через умные вложения и миссии.</p>
                 <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://multiplier.fun?af=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Играть</button>
-                    <button class="accent-btn" onclick="showPopup('multiplier-popup')">Подробнее</button>
+                    <button class="accent-btn" onclick="window.open('https://multiplier.fun?af=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-multiplier">Играть</button>
+                    <button class="accent-btn" id="btn-details-multiplier">Подробнее</button>
                 </div>
             </div>
         </main>
         <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')">Помощь</button>
+            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-6">Помощь</button>
         </footer>
     </div>
 
-    <!-- Поп-апы с подробной информацией -->
+    <!-- Поп-ап для Roach Racing Club -->
     <div id="roach-popup" class="popup hidden">
         <div class="popup-content">
             <h3 id="roach-popup-title">Roach Racing Club</h3>
             <p id="roach-popup-desc">Увлекательная гонка на цифровых тараканах с возможностью улучшения и заработка уникальных NFT. XP начисляется за гонки, улучшения и приглашение друзей.</p>
-            <button class="accent-btn" onclick="window.open('https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Играть</button>
-            <button class="close-btn" onclick="hidePopup('roach-popup')">Закрыть</button>
+            <button class="accent-btn" onclick="window.open('https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-roach-popup">Играть</button>
+            <button class="close-btn" onclick="hidePopup('roach-popup')" id="btn-close-roach">Закрыть</button>
         </div>
     </div>
-    <!-- Аналогичные поп-апы для других игр опущены для краткости, но могут быть добавлены по аналогии -->
+
+    <!-- Пример поп-апа для других игр (закомментировано для краткости) -->
+    <!--
+    <div id="duper-popup" class="popup hidden">
+        <div class="popup-content">
+            <h3 id="duper-popup-title">DUPER</h3>
+            <p id="duper-popup-desc">Весёлая Play-to-Earn игра с уникальной механикой, позволяющая собирать токены через выполнение миссий и сражений. XP начисляется за ежедневные задания, победы в боях и активное использование кошелька Abstract.</p>
+            <button class="accent-btn" onclick="window.open('https://www.duper.gg/?invokeCode=c2pnl47s', '_blank')" id="btn-play-duper-popup">Играть</button>
+            <button class="close-btn" onclick="hidePopup('duper-popup')" id="btn-close-duper">Закрыть</button>
+        </div>
+    </div>
+    -->
 
     <script>
         const WebApp = window.Telegram.WebApp;
         WebApp.ready();
         WebApp.expand();
 
-        const username = WebApp.initDataUnsafe?.user?.username || WebApp.initDataUnsafe?.user?.first_name || 'user';
-        document.getElementById('welcome-greeting').textContent = `Привет, @${username}!`;
+        const userFirstName = WebApp.initDataUnsafe?.user?.first_name || 'user';
+        document.getElementById('welcome-greeting').textContent = `Привет, ${userFirstName}!`;
 
         const translations = {
             ru: {
+                welcomeGreeting: `Привет, ${userFirstName}!`,
                 welcomeText: "Откройте для себя Abstract! L2 блокчейн, позволяющий взаимодействовать с web3 приложениями так же просто, как и с обычными. На Abstract каждое взаимодействие приносит XP. Это как очки опыта в игре, награждающие за активность. Они открывают доступ к наградам, включая аирдроп токена Abstract. Чем больше XP, тем выше шансы на получение. Продолжайте исследовать через наше приложение, чтобы максимизировать заработок!",
                 walletPrompt: "Давайте заведем кошелек Abstract",
                 createTitle: "Давайте заведем кошелек Abstract",
@@ -212,16 +223,51 @@
                 earnDesc: "Все ваши действия на Abstract будут вознаграждать вас XP. Но платные взаимодействия принесут вам больше XP.",
                 freeTitle: "Бюджетные игры",
                 premiumTitle: "Платные игры",
-                roachTitle: "Roach Racing Club", roachDesc: "Увлекательная гонка на цифровых тараканах, где игроки могут зарабатывать уникальные NFT в зависимости от результатов гонок.",
-                duperTitle: "DUPER", duperDesc: "Весёлая Play-to-Earn игра с уникальной механикой, позволяющая собирать токены через выполнение миссий и сражений.",
-                penguTitle: "Pengu Clash", penguDesc: "Битвы с пингвинами в Telegram-боте, где игроки зарабатывают награды за победы в PvP-сражениях.",
-                gigaTitle: "Giga Verse", gigaDesc: "Огромная игровая вселенная GameFi, где игроки исследуют миры и зарабатывают токены через квесты и торговлю.",
-                bigcoinTitle: "BigCoin", bigcoinDesc: "Премиум-игра, сочетающая ставки, торговлю и заработок токенов через стратегические решения.",
-                gachaTitle: "Gacha", gachaDesc: "Захватывающая игра с механикой gacha, где игроки собирают редкие NFT, открывая сундуки.",
-                multiplierTitle: "Multiplier", multiplierDesc: "Стратегическая игра, где игроки умножают свои заработки через умные вложения и миссии.",
-                popupQuestion: "Нужна ли вам помощь с пополнением Abstract кошелька?"
+                roachTitle: "Roach Racing Club",
+                roachDesc: "Увлекательная гонка на цифровых тараканах, где игроки могут зарабатывать уникальные NFT в зависимости от результатов гонок.",
+                duperTitle: "DUPER",
+                duperDesc: "Весёлая Play-to-Earn игра с уникальной механикой, позволяющая собирать токены через выполнение миссий и сражений.",
+                penguTitle: "Pengu Clash",
+                penguDesc: "Битвы с пингвинами в Telegram-боте, где игроки зарабатывают награды за победы в PvP-сражениях.",
+                gigaTitle: "Giga Verse",
+                gigaDesc: "Огромная игровая вселенная GameFi, где игроки исследуют миры и зарабатывают токены через квесты и торговлю.",
+                bigcoinTitle: "BigCoin",
+                bigcoinDesc: "Премиум-игра, сочетающая ставки, торговлю и заработок токенов через стратегические решения.",
+                gachaTitle: "Gacha",
+                gachaDesc: "Захватывающая игра с механикой gacha, где игроки собирают редкие NFT, открывая сундуки.",
+                multiplierTitle: "Multiplier",
+                multiplierDesc: "Стратегическая игра, где игроки умножают свои заработки через умные вложения и миссии.",
+                popupQuestion: "Нужна ли вам помощь с пополнением Abstract кошелька?",
+                roachPopupTitle: "Roach Racing Club",
+                roachPopupDesc: "Увлекательная гонка на цифровых тараканах с возможностью улучшения и заработка уникальных NFT. XP начисляется за гонки, улучшения и приглашение друзей.",
+                btnCreateWallet: "Да, давайте заведем",
+                btnHaveWallet: "Нет, у меня уже есть кошелек Abstract",
+                btnHelp: "Помощь",
+                btnHelpFund: "Да, помогите",
+                btnNoHelpFund: "Нет, я справлюсь",
+                btnClosePopup: "Закрыть",
+                btnWhatNext: "Чем заняться в Abstract?",
+                btnBudget: "Бюджетно",
+                btnPremium: "Готов вложиться",
+                btnPlayRoach: "Играть",
+                btnDetailsRoach: "Подробнее",
+                btnPlayDuper: "Играть",
+                btnDetailsDuper: "Подробнее",
+                btnPlayPengu: "Играть",
+                btnDetailsPengu: "Подробнее",
+                btnPlayGiga: "Играть",
+                btnDetailsGiga: "Подробнее",
+                btnPlayBigcoin: "Играть",
+                btnDetailsBigcoin: "Подробнее",
+                btnPlayGacha: "Играть",
+                btnDetailsGacha: "Подробнее",
+                btnPlayMultiplier: "Играть",
+                btnDetailsMultiplier: "Подробнее",
+                btnPlayRoachPopup: "Играть",
+                btnCloseRoach: "Закрыть"
             },
             en: {
+                welcomeGreeting: `Hello, ${userFirstName}!`,
                 welcomeText: "Discover Abstract! An L2 blockchain that makes interacting with web3 apps as simple as regular ones. Every interaction on Abstract earns XP, like experience points in a game, rewarding your activity. They unlock rewards, including the Abstract token airdrop, with higher XP boosting your chances. Keep exploring through our app to maximize your earnings!",
                 walletPrompt: "Let's set up an Abstract wallet",
                 createTitle: "Let's set up an Abstract wallet",
@@ -236,14 +282,48 @@
                 earnDesc: "All your actions on Abstract will reward you with XP. However, paid interactions will earn you more XP.",
                 freeTitle: "Budget Games",
                 premiumTitle: "Premium Games",
-                roachTitle: "Roach Racing Club", roachDesc: "An exciting digital roach racing game where players can earn unique NFTs based on race results.",
-                duperTitle: "DUPER", duperDesc: "A fun Play-to-Earn game with unique mechanics, allowing token collection through missions and battles.",
-                penguTitle: "Pengu Clash", penguDesc: "Penguin battles in a Telegram bot, where players earn rewards for PvP victories.",
-                gigaTitle: "Giga Verse", gigaDesc: "A vast GameFi universe where players explore worlds and earn tokens through quests and trading.",
-                bigcoinTitle: "BigCoin", bigcoinDesc: "A premium game combining staking, trading, and token earnings through strategic decisions.",
-                gachaTitle: "Gacha", gachaDesc: "An exciting gacha game where players collect rare NFTs by opening chests.",
-                multiplierTitle: "Multiplier", multiplierDesc: "A strategic game where players multiply earnings through smart investments and missions.",
-                popupQuestion: "Do you need help funding your Abstract wallet?"
+                roachTitle: "Roach Racing Club",
+                roachDesc: "An exciting digital roach racing game where players can earn unique NFTs based on race results.",
+                duperTitle: "DUPER",
+                duperDesc: "A fun Play-to-Earn game with unique mechanics, allowing token collection through missions and battles.",
+                penguTitle: "Pengu Clash",
+                penguDesc: "Penguin battles in a Telegram bot, where players earn rewards for PvP victories.",
+                gigaTitle: "Giga Verse",
+                gigaDesc: "A vast GameFi universe where players explore worlds and earn tokens through quests and trading.",
+                bigcoinTitle: "BigCoin",
+                bigcoinDesc: "A premium game combining staking, trading, and token earnings through strategic decisions.",
+                gachaTitle: "Gacha",
+                gachaDesc: "An exciting gacha game where players collect rare NFTs by opening chests.",
+                multiplierTitle: "Multiplier",
+                multiplierDesc: "A strategic game where players multiply earnings through smart investments and missions.",
+                popupQuestion: "Do you need help funding your Abstract wallet?",
+                roachPopupTitle: "Roach Racing Club",
+                roachPopupDesc: "An exciting digital roach racing game with the ability to upgrade and earn unique NFTs. XP is awarded for races, upgrades, and inviting friends.",
+                btnCreateWallet: "Yes, let's set up",
+                btnHaveWallet: "No, I already have an Abstract wallet",
+                btnHelp: "Help",
+                btnHelpFund: "Yes, help me",
+                btnNoHelpFund: "No, I can manage",
+                btnClosePopup: "Close",
+                btnWhatNext: "What's next in Abstract?",
+                btnBudget: "Budget",
+                btnPremium: "Ready to invest",
+                btnPlayRoach: "Play",
+                btnDetailsRoach: "Details",
+                btnPlayDuper: "Play",
+                btnDetailsDuper: "Details",
+                btnPlayPengu: "Play",
+                btnDetailsPengu: "Details",
+                btnPlayGiga: "Play",
+                btnDetailsGiga: "Details",
+                btnPlayBigcoin: "Play",
+                btnDetailsBigcoin: "Details",
+                btnPlayGacha: "Play",
+                btnDetailsGacha: "Details",
+                btnPlayMultiplier: "Play",
+                btnDetailsMultiplier: "Details",
+                btnPlayRoachPopup: "Play",
+                btnCloseRoach: "Close"
             }
         };
 
@@ -251,6 +331,7 @@
 
         function switchLanguage(lang) {
             currentLanguage = lang;
+            document.getElementById('welcome-greeting').textContent = translations[lang].welcomeGreeting;
             document.getElementById('welcome-text').innerHTML = translations[lang].welcomeText;
             document.getElementById('wallet-prompt').textContent = translations[lang].walletPrompt;
             document.getElementById('create-title').textContent = translations[lang].createTitle;
@@ -280,6 +361,40 @@
             document.getElementById('multiplier-title').textContent = translations[lang].multiplierTitle;
             document.getElementById('multiplier-desc').textContent = translations[lang].multiplierDesc;
             document.getElementById('popup-question').textContent = translations[lang].popupQuestion;
+            document.getElementById('roach-popup-title').textContent = translations[lang].roachPopupTitle;
+            document.getElementById('roach-popup-desc').textContent = translations[lang].roachPopupDesc;
+            document.getElementById('btn-create-wallet').textContent = translations[lang].btnCreateWallet;
+            document.getElementById('btn-have-wallet').textContent = translations[lang].btnHaveWallet;
+            document.getElementById('btn-help').textContent = translations[lang].btnHelp;
+            document.getElementById('btn-help-2').textContent = translations[lang].btnHelp;
+            document.getElementById('btn-help-3').textContent = translations[lang].btnHelp;
+            document.getElementById('btn-help-4').textContent = translations[lang].btnHelp;
+            document.getElementById('btn-help-5').textContent = translations[lang].btnHelp;
+            document.getElementById('btn-help-6').textContent = translations[lang].btnHelp;
+            document.getElementById('btn-help-fund').textContent = translations[lang].btnHelpFund;
+            document.getElementById('btn-no-help-fund').textContent = translations[lang].btnNoHelpFund;
+            document.getElementById('btn-close-popup').textContent = translations[lang].btnClosePopup;
+            document.getElementById('btn-help-fund-2').textContent = translations[lang].btnHelpFund;
+            document.getElementById('btn-no-help-fund-2').textContent = translations[lang].btnNoHelpFund;
+            document.getElementById('btn-what-next').textContent = translations[lang].btnWhatNext;
+            document.getElementById('btn-budget').textContent = translations[lang].btnBudget;
+            document.getElementById('btn-premium').textContent = translations[lang].btnPremium;
+            document.getElementById('btn-play-roach').textContent = translations[lang].btnPlayRoach;
+            document.getElementById('btn-details-roach').textContent = translations[lang].btnDetailsRoach;
+            document.getElementById('btn-play-duper').textContent = translations[lang].btnPlayDuper;
+            document.getElementById('btn-details-duper').textContent = translations[lang].btnDetailsDuper;
+            document.getElementById('btn-play-pengu').textContent = translations[lang].btnPlayPengu;
+            document.getElementById('btn-details-pengu').textContent = translations[lang].btnDetailsPengu;
+            document.getElementById('btn-play-giga').textContent = translations[lang].btnPlayGiga;
+            document.getElementById('btn-details-giga').textContent = translations[lang].btnDetailsGiga;
+            document.getElementById('btn-play-bigcoin').textContent = translations[lang].btnPlayBigcoin;
+            document.getElementById('btn-details-bigcoin').textContent = translations[lang].btnDetailsBigcoin;
+            document.getElementById('btn-play-gacha').textContent = translations[lang].btnPlayGacha;
+            document.getElementById('btn-details-gacha').textContent = translations[lang].btnDetailsGacha;
+            document.getElementById('btn-play-multiplier').textContent = translations[lang].btnPlayMultiplier;
+            document.getElementById('btn-details-multiplier').textContent = translations[lang].btnDetailsMultiplier;
+            document.getElementById('btn-play-roach-popup').textContent = translations[lang].btnPlayRoachPopup;
+            document.getElementById('btn-close-roach').textContent = translations[lang].btnCloseRoach;
         }
 
         function showScreen(screenId) {

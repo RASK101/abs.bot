@@ -13,6 +13,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #E0E0E0;
 }
 
 .logo {
@@ -204,4 +206,5 @@ p {
     p { font-size: 12px; }
     .accent-btn, .large-accent-btn { font-size: 14px; padding: 10px; }
     .two-column { grid-template-columns: 1fr; }
+    .app-header { flex-direction: column; gap: 10px; }
 }

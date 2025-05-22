@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract GameFi Hub - Premium Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <a href="earn-xp.html" class="logo">abs hub</a>
+        <div class="language-switch">
+            <button onclick="switchLanguage('ru')">RU</button>
+            <button onclick="switchLanguage('en')">EN</button>
+        </div>
+    </header>
+
+    <main class="game-main">
+        <h2 id="premium-title">Premium Games</h2>
+        <div class="game-card">
+            <h3 id="bigcoin-title">BigCoin</h3>
+            <p id="bigcoin-desc">A premium game combining staking, trading, and token earnings through strategic decisions.</p>
+            <div class="button-group">
+                <button class="accent-btn" onclick="window.open('https://www.bigcoin.tech?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Play</button>
+                <button class="accent-btn" onclick="showPopup('bigcoin-popup')">Details</button>
+            </div>
+        </div>
+        <div class="game-card">
+            <h3 id="gacha-title">Gacha</h3>
+            <p id="gacha-desc">An exciting gacha game where players collect rare NFTs by opening chests.</p>
+            <div class="button-group">
+                <button class="accent-btn" onclick="window.open('https://gacha.game?ref=UH7GXPSD', '_blank')">Play</button>
+                <button class="accent-btn" onclick="showPopup('gacha-popup')">Details</button>
+            </div>
+        </div>
+        <div class="game-card">
+            <h3 id="multiplier-title">Multiplier</h3>
+            <p id="multiplier-desc">A strategic game where players multiply earnings through smart investments and missions.</p>
+            <div class="button-group">
+                <button class="accent-btn" onclick="window.open('https://multiplier.fun?af=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Play</button>
+                <button class="accent-btn" onclick="showPopup('multiplier-popup')">Details</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Placeholder for premium game pop-ups:
+    <div id="bigcoin-popup" class="popup hidden">
+        <div class="popup-content">
+            <h3 id="bigcoin-popup-title">BigCoin</h3>
+            <p id="bigcoin-popup-desc">A premium game combining staking and trading. XP is earned through trades, staking, and referrals.</p>
+            <button class="accent-btn" onclick="window.open('https://www.bigcoin.tech?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Play</button>
+            <button class="close-btn" onclick="hidePopup('bigcoin-popup')">Close</button>
+        </div>
+    </div>
+    -->
+
+    <footer class="app-footer">
+        <button class="help-btn" onclick="window.location.href='index.html'">Help</button>
+    </footer>
+</body>
+</html>

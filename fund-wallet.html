@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract GameFi Hub - Fund Wallet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <a href="earn-xp.html" class="logo">abs hub</a>
+        <div class="language-switch">
+            <button onclick="switchLanguage('ru')">RU</button>
+            <button onclick="switchLanguage('en')">EN</button>
+        </div>
+    </header>
+
+    <main class="two-column">
+        <div>
+            <h2 id="fund-title">Let's fund your Abstract wallet</h2>
+            <p id="fund-instructions">It's easier than you think! Go to your Abstract profile (<a href="https://portal.abs.xyz/profile" target="_blank">https://portal.abs.xyz/profile</a>) and find the +Fund button. Then choose your funding method; the easiest option is through Moonpay with Apple Pay or your bank card.</p>
+            <p id="fund-options">If you already have cryptocurrency, you can use: withdrawal from a centralized exchange, transfer from another wallet, or bridging from another network. Remember that the Abstract wallet address only accepts funds in the Abstract network!</p>
+            <div class="screenshot-placeholder">[Placeholder for +Fund button screenshot]</div>
+        </div>
+        <div>
+            <button class="large-accent-btn" onclick="window.location.href='earn-xp.html'">What to do in Abstract?</button>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <button class="help-btn" onclick="window.location.href='index.html'">Help</button>
+    </footer>
+</body>
+</html>

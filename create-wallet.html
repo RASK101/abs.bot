@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract GameFi Hub - Create Wallet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <a href="earn-xp.html" class="logo">abs hub</a>
+        <div class="language-switch">
+            <button onclick="switchLanguage('ru')">RU</button>
+            <button onclick="switchLanguage('en')">EN</button>
+        </div>
+    </header>
+
+    <main class="two-column">
+        <div>
+            <h2 id="create-title">Let's set up an Abstract wallet</h2>
+            <p id="create-instructions">It's easier than you think! Go to the Abstract login page (<a href="https://portal.abs.xyz/login" target="_blank">https://portal.abs.xyz/login</a>) and sign in with your email or Google account, just like on any other site. You can also register using your EVM wallet. Note that a different wallet address will be generated in the Abstract network, so consider this when transferring funds to Abstract!</p>
+        </div>
+        <div>
+            <p id="fund-prompt">Do you need help funding your Abstract wallet?</p>
+            <div class="button-group">
+                <button class="accent-btn" onclick="window.location.href='fund-wallet.html'">Yes, help me</button>
+                <button class="accent-btn" onclick="window.location.href='earn-xp.html'">No, I’ll manage</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <button class="help-btn" onclick="window.location.href='index.html'">Help</button>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract GameFi Hub - Free Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <a href="earn-xp.html" class="logo">abs hub</a>
+        <div class="language-switch">
+            <button onclick="switchLanguage('ru')">RU</button>
+            <button onclick="switchLanguage('en')">EN</button>
+        </div>
+    </header>
+
+    <main class="game-main">
+        <h2 id="free-title">Budget Games</h2>
+        <div class="game-card">
+            <h3 id="roach-title">Roach Racing Club</h3>
+            <p id="roach-desc">An exciting digital roach racing game where players can earn unique NFTs based on race results.</p>
+            <div class="button-group">
+                <button class="accent-btn" onclick="window.open('https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Play</button>
+                <button class="accent-btn" onclick="showPopup('roach-popup')">Details</button>
+            </div>
+        </div>
+        <div class="game-card">
+            <h3 id="duper-title">DUPER</h3>
+            <p id="duper-desc">A fun Play-to-Earn game with unique mechanics, allowing token collection through missions and battles.</p>
+            <div class="button-group">
+                <button class="accent-btn" onclick="window.open('https://www.duper.gg/?invokeCode=c2pnl47s', '_blank')">Play</button>
+                <button class="accent-btn" onclick="showPopup('duper-popup')">Details</button>
+            </div>
+        </div>
+        <div class="game-card">
+            <h3 id="pengu-title">Pengu Clash</h3>
+            <p id="pengu-desc">Penguin battles in a Telegram bot, where players earn rewards for PvP victories.</p>
+            <div class="button-group">
+                <button class="accent-btn" onclick="window.open('https://t.me/pengu_clash_bot?start=invite-j01bxo', '_blank')">Play</button>
+                <button class="accent-btn" onclick="showPopup('pengu-popup')">Details</button>
+            </div>
+        </div>
+        <div class="game-card">
+            <h3 id="giga-title">Giga Verse</h3>
+            <p id="giga-desc">A vast GameFi universe where players explore worlds and earn tokens through quests and trading.</p>
+            <div class="button-group">
+                <button class="accent-btn" onclick="window.open('https://gigaverse.io/?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Play</button>
+                <button class="accent-btn" onclick="showPopup('giga-popup')">Details</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="roach-popup" class="popup hidden">
+        <div class="popup-content">
+            <h3 id="roach-popup-title">Roach Racing Club</h3>
+            <p id="roach-popup-desc">An exciting digital roach racing game with upgrade options and unique NFT earnings. XP is earned through races, upgrades, and friend invitations.</p>
+            <button class="accent-btn" onclick="window.open('https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')">Play</button>
+            <button class="close-btn" onclick="hidePopup('roach-popup')">Close</button>
+        </div>
+    </div>
+    <!-- Placeholder for other game pop-ups:
+    <div id="duper-popup" class="popup hidden">
+        <div class="popup-content">
+            <h3 id="duper-popup-title">DUPER</h3>
+            <p id="duper-popup-desc">A fun Play-to-Earn game with unique mechanics. XP is earned through missions, battles, and wallet activity.</p>
+            <button class="accent-btn" onclick="window.open('https://www.duper.gg/?invokeCode=c2pnl47s', '_blank')">Play</button>
+            <button class="close-btn" onclick="hidePopup('duper-popup')">Close</button>
+        </div>
+    </div>
+    -->
+
+    <footer class="app-footer">
+        <button class="help-btn" onclick="window.location.href='index.html'">Help</button>
+    </footer>
+</body>
+</html>

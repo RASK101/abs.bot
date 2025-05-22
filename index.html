@@ -1,419 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abstract GameFi Hub</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abstract GameFi Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <!-- Шапка с логотипом и переключателем языка -->
-    <header class="app-header">
-        <a href="#" class="logo" onclick="showScreen('earn-xp')" id="logo-text"><img src="./logo.png" alt="Abs Hub"></a>
-        <div class="language-switch">
-            <button onclick="switchLanguage('ru')" id="lang-ru">RU</button>
-            <button onclick="switchLanguage('en')" id="lang-en">EN</button>
+  <header class="header">
+    <div class="header-content">
+      <a href="#" class="logo" onclick="showScreen('earn-xp')">abs hub</a>
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="ru">RU</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Welcome Screen -->
+    <section id="welcome" class="screen active">
+      <div class="container">
+        <h1><span class="greeting">Hello, </span><span id="user-name">Friend</span>!</h1>
+        <p class="description" data-key="welcome-text">
+          Discover Abstract! An L2 blockchain that makes interacting with web3 apps as simple as regular ones. 
+          Every interaction on Abstract earns XP, like experience points in a game, rewarding your activity. 
+          They unlock rewards, including the Abstract token airdrop, with higher XP boosting your chances. 
+          Keep exploring through our app to maximize your earnings!
+        </p>
+        <div class="action-block">
+          <h2 data-key="setup-wallet">Let's set up an Abstract wallet</h2>
+          <div class="buttons">
+            <button class="btn primary" onclick="showScreen('create-wallet')" data-key="yes-setup">Yes, let's set up</button>
+            <button class="btn secondary" onclick="showPopup('help-popup')" data-key="no-have-wallet">No, I already have an Abstract wallet</button>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <!-- Приветственная страница -->
-    <div id="welcome-screen" class="screen active">
-        <main class="welcome-main">
-            <h1 id="welcome-greeting">Привет, user!</h1>
-            <p id="welcome-text">Откройте для себя Abstract! L2 блокчейн, позволяющий взаимодействовать с web3 приложениями так же просто, как и с обычными. <br/> На Abstract каждое взаимодействие приносит XP. Это как очки опыта в игре, награждающие за активность. Они открывают доступ к наградам, включая аирдроп токена Abstract. Чем больше XP, тем выше шансы на получение. Продолжайте исследовать через наше приложение, чтобы максимизировать заработок!</p>
-            <p id="wallet-prompt">Давайте заведем кошелек Abstract</p>
-            <div class="button-group">
-                <button class="accent-btn" onclick="showScreen('create-wallet')" id="btn-create-wallet">Да, давайте заведем</button>
-                <button class="accent-btn" onclick="showPopup('help-popup')" id="btn-have-wallet">Нет, у меня уже есть кошелек Abstract</button>
+    <!-- Create Wallet Screen -->
+    <section id="create-wallet" class="screen">
+      <div class="container">
+        <h1 data-key="create-wallet-title">Create Your Abstract Wallet</h1>
+        <div class="two-column">
+          <div class="column">
+            <p class="description" data-key="create-wallet-text">
+              It's easier than you think! Go to the Abstract login page (https://portal.abs.xyz/login) and sign in with your email or Google account, just like on any other site. You can also register using your EVM wallet.
+            </p>
+            <p class="note" data-key="create-wallet-note">
+              *Note that a different wallet address will be generated in the Abstract network, so consider this when transferring funds to Abstract!*
+            </p>
+          </div>
+          <div class="column">
+            <div class="action-block">
+              <h2 data-key="need-funding-help">Do you need help funding your Abstract wallet?</h2>
+              <div class="buttons">
+                <button class="btn primary" onclick="showScreen('fund-wallet')" data-key="yes-help">Yes, help me</button>
+                <button class="btn secondary" onclick="showScreen('earn-xp')" data-key="no-manage">No, I'll manage</button>
+              </div>
             </div>
-        </main>
-        <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help">Помощь</button>
-        </footer>
-    </div>
-
-    <!-- Поп-ап для помощи с пополнением -->
-    <div id="help-popup" class="popup hidden">
-        <div class="popup-content">
-            <h2 id="popup-question">Нужна ли вам помощь с пополнением Abstract кошелька?</h2>
-            <div class="button-group">
-                <button class="accent-btn" onclick="showScreen('fund-wallet')" id="btn-help-fund">Да, помогите</button>
-                <button class="accent-btn" onclick="showScreen('earn-xp')" id="btn-no-help-fund">Нет, я справлюсь</button>
-            </div>
-            <button class="close-btn" onclick="hidePopup('help-popup')" id="btn-close-popup">Закрыть</button>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <!-- Страница создания кошелька -->
-    <div id="create-wallet" class="screen hidden">
-        <main class="two-column">
-            <div>
-                <h2 id="create-title">Давайте заведем кошелек Abstract</h2>
-                <p id="create-instructions">Это проще, чем вы думаете! Перейдите на страницу входа Abstract (<a href="https://portal.abs.xyz/login" target="_blank">https://portal.abs.xyz/login</a>) и войдите так же как на любой другой сайт с помощью электронной почты или Google аккаунта. Так же вы можете зарегистрироваться с помощью вашего EVM кошелька. *Важно, что в сети Abstract вам будет сгенерирован другой адрес кошелька, учтите это при переводе средств в сеть Abstract!</p>
+    <!-- Fund Wallet Screen -->
+    <section id="fund-wallet" class="screen">
+      <div class="container">
+        <h1 data-key="fund-wallet-title">Fund Your Abstract Wallet</h1>
+        <div class="two-column">
+          <div class="column">
+            <p class="description" data-key="fund-wallet-text">
+              It's easier than you think! Go to your Abstract profile (https://portal.abs.xyz/profile) and find the +Fund button. Then choose your funding method; the easiest option is through Moonpay with Apple Pay or your bank card. If you already have cryptocurrency, you can use: withdrawal from a centralized exchange, transfer from another wallet, or bridging from another network.
+            </p>
+            <p class="note" data-key="fund-wallet-note">
+              *Remember that the Abstract wallet address only accepts funds in the Abstract network!*
+            </p>
+          </div>
+          <div class="column">
+            <div class="image-placeholder" data-key="fund-button-img">
+              +Fund button screenshot placeholder
             </div>
-            <div>
-                <p id="fund-prompt">Нужна ли вам помощь с пополнением Abstract кошелька?</p>
-                <div class="button-group">
-                    <button class="accent-btn" onclick="showScreen('fund-wallet')" id="btn-help-fund-2">Да, помогите</button>
-                    <button class="accent-btn" onclick="showScreen('earn-xp')" id="btn-no-help-fund-2">Нет, я справлюсь</button>
-                </div>
-            </div>
-        </main>
-        <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-2">Помощь</button>
-        </footer>
-    </div>
-
-    <!-- Страница пополнения кошелька -->
-    <div id="fund-wallet" class="screen hidden">
-        <main class="two-column">
-            <div>
-                <h2 id="fund-title">Давайте пополним кошелек Abstract</h2>
-                <p id="fund-instructions">Это проще, чем вы думаете! Перейдите в свой профиль Abstract (<a href="https://portal.abs.xyz/profile" target="_blank">https://portal.abs.xyz/profile</a>) и найдите кнопку +Fund. После чего выберите способ пополнения. Самым простым способом будет пополнение через Moonpay с помощью Apple Pay или вашей банковской карты.</p>
-                <p id="fund-options">Если у вас уже есть криптовалюта, то вы можете использовать: вывод с централизованной биржи, перевод с другого кошелька, бридж из другой сети. *Помните, что адрес кошелька в сети Abstract может принимать средства только в сети Abstract!</p>
-                <div class="screenshot-placeholder">[Место для скриншота кнопки +Fund]</div>
-            </div>
-            <div>
-                <button class="large-accent-btn" onclick="showScreen('earn-xp')" id="btn-what-next">Чем заняться в Abstract?</button>
-            </div>
-        </main>
-        <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-3">Помощь</button>
-        </footer>
-    </div>
-
-    <!-- Страница заработка XP -->
-    <div id="earn-xp" class="screen hidden">
-        <main class="earn-main">
-            <h2 id="earn-title">Заработайте XP!</h2>
-            <p id="earn-text">На Abstract каждое взаимодействие приносит XP. Это как очки опыта в игре, награждающие за активность. Они открывают доступ к наградам, включая аирдроп токена Abstract. Чем больше XP, тем выше шансы на получение. Продолжайте исследовать через наше приложение, чтобы максимизировать заработок!</p>
-            <h3 id="earn-subtitle">Как вы хотите это сделать?</h3>
-            <p id="earn-desc">Все ваши действия на Abstract будут вознаграждать вас XP. Но платные взаимодействия принесут вам больше XP.</p>
-            <div class="button-group">
-                <button class="accent-btn" onclick="showScreen('free-games')" id="btn-budget">Бюджетно</button>
-                <button class="accent-btn" onclick="showScreen('premium-games')" id="btn-premium">Готов вложиться</button>
-            </div>
-        </main>
-        <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-4">Помощь</button>
-        </footer>
-    </div>
-
-    <!-- Страница бюджетных игр -->
-    <div id="free-games" class="screen hidden">
-        <main class="game-main">
-            <h2 id="free-title">Бюджетные игры</h2>
-            <div class="game-card">
-                <h3 id="roach-title">Roach Racing Club</h3>
-                <p id="roach-desc">Увлекательная гонка на цифровых тараканах, где игроки могут зарабатывать уникальные NFT в зависимости от результатов гонок.</p>
-                <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-roach">Играть</button>
-                    <button class="accent-btn" onclick="showPopup('roach-popup')" id="btn-details-roach">Подробнее</button>
-                </div>
-            </div>
-            <div class="game-card">
-                <h3 id="duper-title">DUPER</h3>
-                <p id="duper-desc">Весёлая Play-to-Earn игра с уникальной механикой, позволяющая собирать токены через выполнение миссий и сражений.</p>
-                <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://www.duper.gg/?invokeCode=c2pnl47s', '_blank')" id="btn-play-duper">Играть</button>
-                    <button class="accent-btn" id="btn-details-duper">Подробнее</button>
-                </div>
-            </div>
-            <div class="game-card">
-                <h3 id="pengu-title">Pengu Clash</h3>
-                <p id="pengu-desc">Битвы с пингвинами в Telegram-боте, где игроки зарабатывают награды за победы в PvP-сражениях.</p>
-                <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://t.me/pengu_clash_bot?start=invite-j01bxo', '_blank')" id="btn-play-pengu">Играть</button>
-                    <button class="accent-btn" id="btn-details-pengu">Подробнее</button>
-                </div>
-            </div>
-            <div class="game-card">
-                <h3 id="giga-title">Giga Verse</h3>
-                <p id="giga-desc">Огромная игровая вселенная GameFi, где игроки исследуют миры и зарабатывают токены через квесты и торговлю.</p>
-                <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://gigaverse.io/?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-giga">Играть</button>
-                    <button class="accent-btn" id="btn-details-giga">Подробнее</button>
-                </div>
-            </div>
-        </main>
-        <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-5">Помощь</button>
-        </footer>
-    </div>
-
-    <!-- Страница платных игр -->
-    <div id="premium-games" class="screen hidden">
-        <main class="game-main">
-            <h2 id="premium-title">Платные игры</h2>
-            <div class="game-card">
-                <h3 id="bigcoin-title">BigCoin</h3>
-                <p id="bigcoin-desc">Премиум-игра, сочетающая ставки, торговлю и заработок токенов через стратегические решения.</p>
-                <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://www.bigcoin.tech?ref=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-bigcoin">Играть</button>
-                    <button class="accent-btn" id="btn-details-bigcoin">Подробнее</button>
-                </div>
-            </div>
-            <div class="game-card">
-                <h3 id="gacha-title">Gacha</h3>
-                <p id="gacha-desc">Захватывающая игра с механикой gacha, где игроки собирают редкие NFT, открывая сундуки.</p>
-                <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://gacha.game?ref=UH7GXPSD', '_blank')" id="btn-play-gacha">Играть</button>
-                    <button class="accent-btn" id="btn-details-gacha">Подробнее</button>
-                </div>
-            </div>
-            <div class="game-card">
-                <h3 id="multiplier-title">Multiplier</h3>
-                <p id="multiplier-desc">Стратегическая игра, где игроки умножают свои заработки через умные вложения и миссии.</p>
-                <div class="button-group">
-                    <button class="accent-btn" onclick="window.open('https://multiplier.fun?af=0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-multiplier">Играть</button>
-                    <button class="accent-btn" id="btn-details-multiplier">Подробнее</button>
-                </div>
-            </div>
-        </main>
-        <footer class="app-footer">
-            <button class="help-btn" onclick="showScreen('welcome-screen')" id="btn-help-6">Помощь</button>
-        </footer>
-    </div>
-
-    <!-- Поп-ап для Roach Racing Club -->
-    <div id="roach-popup" class="popup hidden">
-        <div class="popup-content">
-            <h3 id="roach-popup-title">Roach Racing Club</h3>
-            <p id="roach-popup-desc">Увлекательная гонка на цифровых тараканах с возможностью улучшения и заработка уникальных NFT. XP начисляется за гонки, улучшения и приглашение друзей.</p>
-            <button class="accent-btn" onclick="window.open('https://roachracing.club/0xe36E94D7ac69e0459e08b993b13cBF5542f34933', '_blank')" id="btn-play-roach-popup">Играть</button>
-            <button class="close-btn" onclick="hidePopup('roach-popup')" id="btn-close-roach">Закрыть</button>
+          </div>
         </div>
-    </div>
+        <button class="btn primary large" onclick="showScreen('earn-xp')" data-key="what-to-do">What to do in Abstract?</button>
+      </div>
+    </section>
 
-    <!-- Пример поп-апа для других игр (закомментировано для краткости) -->
-    <!--
-    <div id="duper-popup" class="popup hidden">
-        <div class="popup-content">
-            <h3 id="duper-popup-title">DUPER</h3>
-            <p id="duper-popup-desc">Весёлая Play-to-Earn игра с уникальной механикой, позволяющая собирать токены через выполнение миссий и сражений. XP начисляется за ежедневные задания, победы в боях и активное использование кошелька Abstract.</p>
-            <button class="accent-btn" onclick="window.open('https://www.duper.gg/?invokeCode=c2pnl47s', '_blank')" id="btn-play-duper-popup">Играть</button>
-            <button class="close-btn" onclick="hidePopup('duper-popup')" id="btn-close-duper">Закрыть</button>
+    <!-- Earn XP Screen -->
+    <section id="earn-xp" class="screen">
+      <div class="container">
+        <h1 data-key="earn-xp-title">Earn XP in Abstract</h1>
+        <p class="description" data-key="earn-xp-text">
+          Every interaction on Abstract earns XP, like experience points in a game, rewarding your activity. They unlock rewards, including the Abstract token airdrop, with higher XP boosting your chances. Keep exploring through our app to maximize your earnings!
+        </p>
+        <div class="action-block">
+          <h2 data-key="earn-method">How would you like to do it?</h2>
+          <p data-key="earn-description">All your actions on Abstract will reward you with XP. However, paid interactions will earn you more XP.</p>
+          <div class="buttons">
+            <button class="btn primary" onclick="showScreen('free-games')" data-key="budget">Budget</button>
+            <button class="btn secondary" onclick="showScreen('premium-games')" data-key="invest">Ready to invest</button>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Free Games Screen -->
+    <section id="free-games" class="screen">
+      <div class="container">
+        <h1 data-key="free-games-title">Budget Games</h1>
+        <div class="games-grid">
+          <div class="game-card">
+            <h2>Roach Racing Club</h2>
+            <p data-key="roach-description">An exciting digital roach racing game where players can earn unique NFTs based on race results.</p>
+            <div class="buttons">
+              <a href="https://absproject.xyz/ref1" target="_blank" class="btn primary" data-key="play">Play</a>
+              <button class="btn secondary" onclick="showPopup('roach-popup')" data-key="details">Details</button>
+            </div>
+          </div>
+          <div class="game-card">
+            <h2>DUPER</h2>
+            <p data-key="duper-description">A fun Play-to-Earn game with unique mechanics, allowing token collection through missions and battles.</p>
+            <div class="buttons">
+              <a href="https://absproject.xyz/ref2" target="_blank" class="btn primary" data-key="play">Play</a>
+              <button class="btn secondary" onclick="showPopup('duper-popup')" data-key="details">Details</button>
+            </div>
+          </div>
+          <div class="game-card">
+            <h2>Pengu Clash</h2>
+            <p data-key="pengu-description">Penguin battles in a Telegram bot, where players earn rewards for PvP victories.</p>
+            <div class="buttons">
+              <a href="https://absproject.xyz/ref3" target="_blank" class="btn primary" data-key="play">Play</a>
+              <button class="btn secondary" onclick="showPopup('pengu-popup')" data-key="details">Details</button>
+            </div>
+          </div>
+          <div class="game-card">
+            <h2>Giga Verse</h2>
+            <p data-key="giga-description">A vast GameFi universe where players explore worlds and earn tokens through quests and trading.</p>
+            <div class="buttons">
+              <a href="https://absproject.xyz/ref4" target="_blank" class="btn primary" data-key="play">Play</a>
+              <button class="btn secondary" onclick="showPopup('giga-popup')" data-key="details">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="navigation-buttons">
+          <button class="btn secondary" onclick="showScreen('earn-xp')" data-key="back">Back</button>
+          <button class="btn primary" onclick="showScreen('premium-games')" data-key="premium-games">Premium Games</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Premium Games Screen -->
+    <section id="premium-games" class="screen">
+      <div class="container">
+        <h1 data-key="premium-games-title">Premium Games</h1>
+        <div class="games-grid">
+          <div class="game-card">
+            <h2>BigCoin</h2>
+            <p data-key="bigcoin-description">A premium game combining staking, trading, and token earnings through strategic decisions.</p>
+            <div class="buttons">
+              <a href="https://absproject.xyz/ref5" target="_blank" class="btn primary" data-key="play">Play</a>
+              <button class="btn secondary" onclick="showPopup('bigcoin-popup')" data-key="details">Details</button>
+            </div>
+          </div>
+          <div class="game-card">
+            <h2>Gacha</h2>
+            <p data-key="gacha-description">An exciting gacha game where players collect rare NFTs by opening chests.</p>
+            <div class="buttons">
+              <a href="https://absproject.xyz/ref6" target="_blank" class="btn primary" data-key="play">Play</a>
+              <button class="btn secondary" onclick="showPopup('gacha-popup')" data-key="details">Details</button>
+            </div>
+          </div>
+          <div class="game-card">
+            <h2>Multiplier</h2>
+            <p data-key="multiplier-description">A strategic game where players multiply earnings through smart investments and missions.</p>
+            <div class="buttons">
+              <a href="https://absproject.xyz/ref7" target="_blank" class="btn primary" data-key="play">Play</a>
+              <button class="btn secondary" onclick="showPopup('multiplier-popup')" data-key="details">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="navigation-buttons">
+          <button class="btn secondary" onclick="showScreen('free-games')" data-key="free-games">Budget Games</button>
+          <button class="btn primary" onclick="showScreen('earn-xp')" data-key="back">Back</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pop-ups -->
+  <div id="help-popup" class="popup">
+    <div class="popup-content">
+      <h2 data-key="need-funding-help">Do you need help funding your Abstract wallet?</h2>
+      <div class="buttons">
+        <button class="btn primary" onclick="showScreen('fund-wallet'); closePopup()" data-key="yes-help">Yes, help me</button>
+        <button class="btn secondary" onclick="showScreen('earn-xp'); closePopup()" data-key="no-manage">No, I'll manage</button>
+      </div>
+      <button class="close-btn" onclick="closePopup()">×</button>
     </div>
-    -->
+  </div>
 
-    <script>
-        const WebApp = window.Telegram.WebApp;
-        WebApp.ready();
-        WebApp.expand();
+  <div id="roach-popup" class="popup">
+    <div class="popup-content">
+      <h2>Roach Racing Club</h2>
+      <p data-key="roach-popup-text">
+        An exciting digital roach racing game with upgrade options and unique NFT earnings. 
+        XP is earned through races, upgrades, and friend invitations.
+      </p>
+      <div class="buttons">
+        <a href="https://absproject.xyz/ref1" target="_blank" class="btn primary" data-key="play">Play</a>
+      </div>
+      <button class="close-btn" onclick="closePopup()">×</button>
+    </div>
+  </div>
 
-        const userFirstName = WebApp.initDataUnsafe?.user?.first_name || 'user';
-        document.getElementById('welcome-greeting').textContent = `Привет, ${userFirstName}!`;
+  <!-- Placeholder pop-ups for other games -->
+  <div id="duper-popup" class="popup">
+    <div class="popup-content">
+      <h2>DUPER</h2>
+      <p data-key="duper-popup-text">
+        A fun Play-to-Earn game with unique mechanics, allowing token collection through missions and battles.
+        Earn XP by completing daily tasks, participating in tournaments, and inviting friends.
+      </p>
+      <div class="buttons">
+        <a href="https://absproject.xyz/ref2" target="_blank" class="btn primary" data-key="play">Play</a>
+      </div>
+      <button class="close-btn" onclick="closePopup()">×</button>
+    </div>
+  </div>
 
-        const translations = {
-            ru: {
-                welcomeGreeting: `Привет, ${userFirstName}!`,
-                welcomeText: "Откройте для себя Abstract! L2 блокчейн, позволяющий взаимодействовать с web3 приложениями так же просто, как и с обычными. На Abstract каждое взаимодействие приносит XP. Это как очки опыта в игре, награждающие за активность. Они открывают доступ к наградам, включая аирдроп токена Abstract. Чем больше XP, тем выше шансы на получение. Продолжайте исследовать через наше приложение, чтобы максимизировать заработок!",
-                walletPrompt: "Давайте заведем кошелек Abstract",
-                createTitle: "Давайте заведем кошелек Abstract",
-                createInstructions: "Это проще, чем вы думаете! Перейдите на страницу входа Abstract (<a href='https://portal.abs.xyz/login' target='_blank'>https://portal.abs.xyz/login</a>) и войдите так же как на любой другой сайт с помощью электронной почты или Google аккаунта. Так же вы можете зарегистрироваться с помощью вашего EVM кошелька. *Важно, что в сети Abstract вам будет сгенерирован другой адрес кошелька, учтите это при переводе средств в сеть Abstract!",
-                fundPrompt: "Нужна ли вам помощь с пополнением Abstract кошелька?",
-                fundTitle: "Давайте пополним кошелек Abstract",
-                fundInstructions: "Это проще, чем вы думаете! Перейдите в свой профиль Abstract (<a href='https://portal.abs.xyz/profile' target='_blank'>https://portal.abs.xyz/profile</a>) и найдите кнопку +Fund. После чего выберите способ пополнения. Самым простым способом будет пополнение через Moonpay с помощью Apple Pay или вашей банковской карты.",
-                fundOptions: "Если у вас уже есть криптовалюта, то вы можете использовать: вывод с централизованной биржи, перевод с другого кошелька, бридж из другой сети. *Помните, что адрес кошелька в сети Abstract может принимать средства только в сети Abstract!",
-                earnTitle: "Заработайте XP!",
-                earnText: "На Abstract каждое взаимодействие приносит XP. Это как очки опыта в игре, награждающие за активность. Они открывают доступ к наградам, включая аирдроп токена Abstract. Чем больше XP, тем выше шансы на получение. Продолжайте исследовать через наше приложение, чтобы максимизировать заработок!",
-                earnSubtitle: "Как вы хотите это сделать?",
-                earnDesc: "Все ваши действия на Abstract будут вознаграждать вас XP. Но платные взаимодействия принесут вам больше XP.",
-                freeTitle: "Бюджетные игры",
-                premiumTitle: "Платные игры",
-                roachTitle: "Roach Racing Club",
-                roachDesc: "Увлекательная гонка на цифровых тараканах, где игроки могут зарабатывать уникальные NFT в зависимости от результатов гонок.",
-                duperTitle: "DUPER",
-                duperDesc: "Весёлая Play-to-Earn игра с уникальной механикой, позволяющая собирать токены через выполнение миссий и сражений.",
-                penguTitle: "Pengu Clash",
-                penguDesc: "Битвы с пингвинами в Telegram-боте, где игроки зарабатывают награды за победы в PvP-сражениях.",
-                gigaTitle: "Giga Verse",
-                gigaDesc: "Огромная игровая вселенная GameFi, где игроки исследуют миры и зарабатывают токены через квесты и торговлю.",
-                bigcoinTitle: "BigCoin",
-                bigcoinDesc: "Премиум-игра, сочетающая ставки, торговлю и заработок токенов через стратегические решения.",
-                gachaTitle: "Gacha",
-                gachaDesc: "Захватывающая игра с механикой gacha, где игроки собирают редкие NFT, открывая сундуки.",
-                multiplierTitle: "Multiplier",
-                multiplierDesc: "Стратегическая игра, где игроки умножают свои заработки через умные вложения и миссии.",
-                popupQuestion: "Нужна ли вам помощь с пополнением Abstract кошелька?",
-                roachPopupTitle: "Roach Racing Club",
-                roachPopupDesc: "Увлекательная гонка на цифровых тараканах с возможностью улучшения и заработка уникальных NFT. XP начисляется за гонки, улучшения и приглашение друзей.",
-                btnCreateWallet: "Да, давайте заведем",
-                btnHaveWallet: "Нет, у меня уже есть кошелек Abstract",
-                btnHelp: "Помощь",
-                btnHelpFund: "Да, помогите",
-                btnNoHelpFund: "Нет, я справлюсь",
-                btnClosePopup: "Закрыть",
-                btnWhatNext: "Чем заняться в Abstract?",
-                btnBudget: "Бюджетно",
-                btnPremium: "Готов вложиться",
-                btnPlayRoach: "Играть",
-                btnDetailsRoach: "Подробнее",
-                btnPlayDuper: "Играть",
-                btnDetailsDuper: "Подробнее",
-                btnPlayPengu: "Играть",
-                btnDetailsPengu: "Подробнее",
-                btnPlayGiga: "Играть",
-                btnDetailsGiga: "Подробнее",
-                btnPlayBigcoin: "Играть",
-                btnDetailsBigcoin: "Подробнее",
-                btnPlayGacha: "Играть",
-                btnDetailsGacha: "Подробнее",
-                btnPlayMultiplier: "Играть",
-                btnDetailsMultiplier: "Подробнее",
-                btnPlayRoachPopup: "Играть",
-                btnCloseRoach: "Закрыть"
-            },
-            en: {
-                welcomeGreeting: `Hello, ${userFirstName}!`,
-                welcomeText: "Discover Abstract! An L2 blockchain that makes interacting with web3 apps as simple as regular ones. Every interaction on Abstract earns XP, like experience points in a game, rewarding your activity. They unlock rewards, including the Abstract token airdrop, with higher XP boosting your chances. Keep exploring through our app to maximize your earnings!",
-                walletPrompt: "Let's set up an Abstract wallet",
-                createTitle: "Let's set up an Abstract wallet",
-                createInstructions: "It's easier than you think! Go to the Abstract login page (<a href='https://portal.abs.xyz/login' target='_blank'>https://portal.abs.xyz/login</a>) and sign in with your email or Google account, just like on any other site. You can also register using your EVM wallet. *Note that a different wallet address will be generated in the Abstract network, so consider this when transferring funds to Abstract!*",
-                fundPrompt: "Do you need help funding your Abstract wallet?",
-                fundTitle: "Let's fund your Abstract wallet",
-                fundInstructions: "It's easier than you think! Go to your Abstract profile (<a href='https://portal.abs.xyz/profile' target='_blank'>https://portal.abs.xyz/profile</a>) and find the +Fund button. Then choose your funding method; the easiest option is through Moonpay with Apple Pay or your bank card.",
-                fundOptions: "If you already have cryptocurrency, you can use: withdrawal from a centralized exchange, transfer from another wallet, or bridging from another network. *Remember that the Abstract wallet address only accepts funds in the Abstract network!*",
-                earnTitle: "Earn XP!",
-                earnText: "Every interaction on Abstract earns XP, like experience points in a game, rewarding your activity. They unlock rewards, including the Abstract token airdrop, with higher XP boosting your chances. Keep exploring through our app to maximize your earnings!",
-                earnSubtitle: "How would you like to do it?",
-                earnDesc: "All your actions on Abstract will reward you with XP. However, paid interactions will earn you more XP.",
-                freeTitle: "Budget Games",
-                premiumTitle: "Premium Games",
-                roachTitle: "Roach Racing Club",
-                roachDesc: "An exciting digital roach racing game where players can earn unique NFTs based on race results.",
-                duperTitle: "DUPER",
-                duperDesc: "A fun Play-to-Earn game with unique mechanics, allowing token collection through missions and battles.",
-                penguTitle: "Pengu Clash",
-                penguDesc: "Penguin battles in a Telegram bot, where players earn rewards for PvP victories.",
-                gigaTitle: "Giga Verse",
-                gigaDesc: "A vast GameFi universe where players explore worlds and earn tokens through quests and trading.",
-                bigcoinTitle: "BigCoin",
-                bigcoinDesc: "A premium game combining staking, trading, and token earnings through strategic decisions.",
-                gachaTitle: "Gacha",
-                gachaDesc: "An exciting gacha game where players collect rare NFTs by opening chests.",
-                multiplierTitle: "Multiplier",
-                multiplierDesc: "A strategic game where players multiply earnings through smart investments and missions.",
-                popupQuestion: "Do you need help funding your Abstract wallet?",
-                roachPopupTitle: "Roach Racing Club",
-                roachPopupDesc: "An exciting digital roach racing game with the ability to upgrade and earn unique NFTs. XP is awarded for races, upgrades, and inviting friends.",
-                btnCreateWallet: "Yes, let's set up",
-                btnHaveWallet: "No, I already have an Abstract wallet",
-                btnHelp: "Help",
-                btnHelpFund: "Yes, help me",
-                btnNoHelpFund: "No, I can manage",
-                btnClosePopup: "Close",
-                btnWhatNext: "What's next in Abstract?",
-                btnBudget: "Budget",
-                btnPremium: "Ready to invest",
-                btnPlayRoach: "Play",
-                btnDetailsRoach: "Details",
-                btnPlayDuper: "Play",
-                btnDetailsDuper: "Details",
-                btnPlayPengu: "Play",
-                btnDetailsPengu: "Details",
-                btnPlayGiga: "Play",
-                btnDetailsGiga: "Details",
-                btnPlayBigcoin: "Play",
-                btnDetailsBigcoin: "Details",
-                btnPlayGacha: "Play",
-                btnDetailsGacha: "Details",
-                btnPlayMultiplier: "Play",
-                btnDetailsMultiplier: "Details",
-                btnPlayRoachPopup: "Play",
-                btnCloseRoach: "Close"
-            }
-        };
+  <div id="pengu-popup" class="popup">
+    <div class="popup-content">
+      <h2>Pengu Clash</h2>
+      <p data-key="pengu-popup-text">
+        Penguin battles in a Telegram bot, where players earn rewards for PvP victories.
+        Earn XP by winning battles, upgrading your penguin, and participating in tournaments.
+      </p>
+      <div class="buttons">
+        <a href="https://absproject.xyz/ref3" target="_blank" class="btn primary" data-key="play">Play</a>
+      </div>
+      <button class="close-btn" onclick="closePopup()">×</button>
+    </div>
+  </div>
 
-        let currentLanguage = 'ru';
+  <footer class="footer">
+    <button class="help-btn" onclick="showScreen('welcome')" data-key="help">Help</button>
+  </footer>
 
-        function switchLanguage(lang) {
-            currentLanguage = lang;
-            document.getElementById('welcome-greeting').textContent = translations[lang].welcomeGreeting;
-            document.getElementById('welcome-text').innerHTML = translations[lang].welcomeText;
-            document.getElementById('wallet-prompt').textContent = translations[lang].walletPrompt;
-            document.getElementById('create-title').textContent = translations[lang].createTitle;
-            document.getElementById('create-instructions').innerHTML = translations[lang].createInstructions;
-            document.getElementById('fund-prompt').textContent = translations[lang].fundPrompt;
-            document.getElementById('fund-title').textContent = translations[lang].fundTitle;
-            document.getElementById('fund-instructions').textContent = translations[lang].fundInstructions;
-            document.getElementById('fund-options').textContent = translations[lang].fundOptions;
-            document.getElementById('earn-title').textContent = translations[lang].earnTitle;
-            document.getElementById('earn-text').textContent = translations[lang].earnText;
-            document.getElementById('earn-subtitle').textContent = translations[lang].earnSubtitle;
-            document.getElementById('earn-desc').textContent = translations[lang].earnDesc;
-            document.getElementById('free-title').textContent = translations[lang].freeTitle;
-            document.getElementById('premium-title').textContent = translations[lang].premiumTitle;
-            document.getElementById('roach-title').textContent = translations[lang].roachTitle;
-            document.getElementById('roach-desc').textContent = translations[lang].roachDesc;
-            document.getElementById('duper-title').textContent = translations[lang].duperTitle;
-            document.getElementById('duper-desc').textContent = translations[lang].duperDesc;
-            document.getElementById('pengu-title').textContent = translations[lang].penguTitle;
-            document.getElementById('pengu-desc').textContent = translations[lang].penguDesc;
-            document.getElementById('giga-title').textContent = translations[lang].gigaTitle;
-            document.getElementById('giga-desc').textContent = translations[lang].gigaDesc;
-            document.getElementById('bigcoin-title').textContent = translations[lang].bigcoinTitle;
-            document.getElementById('bigcoin-desc').textContent = translations[lang].bigcoinDesc;
-            document.getElementById('gacha-title').textContent = translations[lang].gachaTitle;
-            document.getElementById('gacha-desc').textContent = translations[lang].gachaDesc;
-            document.getElementById('multiplier-title').textContent = translations[lang].multiplierTitle;
-            document.getElementById('multiplier-desc').textContent = translations[lang].multiplierDesc;
-            document.getElementById('popup-question').textContent = translations[lang].popupQuestion;
-            document.getElementById('roach-popup-title').textContent = translations[lang].roachPopupTitle;
-            document.getElementById('roach-popup-desc').textContent = translations[lang].roachPopupDesc;
-            document.getElementById('btn-create-wallet').textContent = translations[lang].btnCreateWallet;
-            document.getElementById('btn-have-wallet').textContent = translations[lang].btnHaveWallet;
-            document.getElementById('btn-help').textContent = translations[lang].btnHelp;
-            document.getElementById('btn-help-2').textContent = translations[lang].btnHelp;
-            document.getElementById('btn-help-3').textContent = translations[lang].btnHelp;
-            document.getElementById('btn-help-4').textContent = translations[lang].btnHelp;
-            document.getElementById('btn-help-5').textContent = translations[lang].btnHelp;
-            document.getElementById('btn-help-6').textContent = translations[lang].btnHelp;
-            document.getElementById('btn-help-fund').textContent = translations[lang].btnHelpFund;
-            document.getElementById('btn-no-help-fund').textContent = translations[lang].btnNoHelpFund;
-            document.getElementById('btn-close-popup').textContent = translations[lang].btnClosePopup;
-            document.getElementById('btn-help-fund-2').textContent = translations[lang].btnHelpFund;
-            document.getElementById('btn-no-help-fund-2').textContent = translations[lang].btnNoHelpFund;
-            document.getElementById('btn-what-next').textContent = translations[lang].btnWhatNext;
-            document.getElementById('btn-budget').textContent = translations[lang].btnBudget;
-            document.getElementById('btn-premium').textContent = translations[lang].btnPremium;
-            document.getElementById('btn-play-roach').textContent = translations[lang].btnPlayRoach;
-            document.getElementById('btn-details-roach').textContent = translations[lang].btnDetailsRoach;
-            document.getElementById('btn-play-duper').textContent = translations[lang].btnPlayDuper;
-            document.getElementById('btn-details-duper').textContent = translations[lang].btnDetailsDuper;
-            document.getElementById('btn-play-pengu').textContent = translations[lang].btnPlayPengu;
-            document.getElementById('btn-details-pengu').textContent = translations[lang].btnDetailsPengu;
-            document.getElementById('btn-play-giga').textContent = translations[lang].btnPlayGiga;
-            document.getElementById('btn-details-giga').textContent = translations[lang].btnDetailsGiga;
-            document.getElementById('btn-play-bigcoin').textContent = translations[lang].btnPlayBigcoin;
-            document.getElementById('btn-details-bigcoin').textContent = translations[lang].btnDetailsBigcoin;
-            document.getElementById('btn-play-gacha').textContent = translations[lang].btnPlayGacha;
-            document.getElementById('btn-details-gacha').textContent = translations[lang].btnDetailsGacha;
-            document.getElementById('btn-play-multiplier').textContent = translations[lang].btnPlayMultiplier;
-            document.getElementById('btn-details-multiplier').textContent = translations[lang].btnDetailsMultiplier;
-            document.getElementById('btn-play-roach-popup').textContent = translations[lang].btnPlayRoachPopup;
-            document.getElementById('btn-close-roach').textContent = translations[lang].btnCloseRoach;
-        }
-
-        function showScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.add('hidden');
-                screen.classList.remove('active');
-            });
-            const screen = document.getElementById(screenId);
-            screen.classList.remove('hidden');
-            screen.classList.add('active');
-        }
-
-        function showPopup(popupId) {
-            document.getElementById(popupId).classList.remove('hidden');
-        }
-
-        function hidePopup(popupId) {
-            document.getElementById(popupId).classList.add('hidden');
-        }
-    </script>
+  <script src="js/translations.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
